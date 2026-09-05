@@ -174,6 +174,7 @@ const steps = [
 ];
 
 const esc = (s) => String(s).replace(/[&<>\"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const assetUrl = (path) => String(path).startsWith("images/") ? `../${path}` : path;
 
 const getCardBrief = (brief) => {
   const cleaned = String(brief || "")
@@ -197,7 +198,7 @@ function renderCaseStudyCards() {
     .map((company) => `
       <article class="case-study-card reveal" data-company-id="${esc(company.id)}">
         <div class="card-logo">
-          <img src="${esc(company.logo)}" alt="${esc(company.name)} logo" width="120" height="80" />
+          <img src="${esc(assetUrl(company.logo))}" alt="${esc(company.name)} logo" width="120" height="80" />
         </div>
         <div class="card-content">
           <p class="eyebrow">${esc(company.industry)}</p>
@@ -236,7 +237,7 @@ function renderCaseStudyModal(company, index) {
             .map((video) => `
               <div class="video-container">
                 <video controls width="100%" height="auto">
-                  <source src="${esc(video)}" type="video/mp4">
+                  <source src="${esc(assetUrl(video))}" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
               </div>
@@ -249,8 +250,8 @@ function renderCaseStudyModal(company, index) {
 
   const imagesHTML = company.images
     .map((img) => `
-      <div class="gallery-item" data-gallery-image="${esc(img)}">
-        <img src="${esc(img)}" alt="${esc(company.name)} project image" width="600" height="400" loading="lazy" />
+      <div class="gallery-item" data-gallery-image="${esc(assetUrl(img))}">
+        <img src="${esc(assetUrl(img))}" alt="${esc(company.name)} project image" width="600" height="400" loading="lazy" />
       </div>
     `)
     .join("");
@@ -281,7 +282,7 @@ function renderCaseStudyModal(company, index) {
       <div class="modal-inner-container">
         <div class="case-study-header">
           <div class="header-logo">
-            <img src="${esc(company.logo)}" alt="${esc(company.name)} logo" width="200" height="100" />
+            <img src="${esc(assetUrl(company.logo))}" alt="${esc(company.name)} logo" width="200" height="100" />
           </div>
           <div class="header-info">
             <p class="eyebrow">${esc(company.industry)}</p>
@@ -463,7 +464,7 @@ function render() {
         <article class="client-card reveal" aria-label="${esc(client.name)} client">
           <div class="client-logo">
             ${client.logo
-              ? `<img src="${esc(client.logo)}" alt="${esc(client.name)} logo" width="180" height="110" loading="lazy" />`
+              ? `<img src="${esc(assetUrl(client.logo))}" alt="${esc(client.name)} logo" width="180" height="110" loading="lazy" />`
               : `<span class="client-name-only">${esc(client.name)}</span>`}
           </div>
           <p>${esc(client.name)}</p>
@@ -618,7 +619,7 @@ function initForm() {
     // Connect a real endpoint here later, e.g. fetch("/api/contact", {...}).
     setTimeout(() => {
       sessionStorage.setItem("contact_submitted", "1");
-      window.location.href = "thank-you.html";
+      window.location.href = "../thank-you/thank-you.html";
     }, 500);
   });
 }
