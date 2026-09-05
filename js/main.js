@@ -174,7 +174,11 @@ const steps = [
 ];
 
 const esc = (s) => String(s).replace(/[&<>\"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const assetUrl = (path) => String(path).startsWith("images/") ? `../${path}` : path;
+const assetUrl = (path) => {
+  if (!String(path).startsWith("images/")) return path;
+  const nestedPage = /\/(?:home|portfolio)\//.test(window.location.pathname);
+  return nestedPage ? `../${path}` : path;
+};
 
 const getCardBrief = (brief) => {
   const cleaned = String(brief || "")
@@ -619,7 +623,9 @@ function initForm() {
     // Connect a real endpoint here later, e.g. fetch("/api/contact", {...}).
     setTimeout(() => {
       sessionStorage.setItem("contact_submitted", "1");
-      window.location.href = "../thank-you/thank-you.html";
+      window.location.href = window.location.pathname.includes("/home/") || window.location.pathname.includes("/portfolio/")
+        ? "../thank-you/thank-you.html"
+        : "thank-you/thank-you.html";
     }, 500);
   });
 }
