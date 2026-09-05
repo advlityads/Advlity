@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Advlity — Digital Marketing Agency That Turns Attention Into Growth</title>
+<meta name="description" content="Advlity is a performance-driven digital marketing agency running Meta Ads, Google Ads, content and branding for brands that want measurable growth." />
+<meta property="og:title" content="Advlity — Digital Marketing Agency That Turns Attention Into Growth" />
+<meta property="og:description" content="Performance-driven digital marketing: Meta Ads, Google Ads, content and branding for measurable growth." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" href="Advlity-browser-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+<script src="js/meta-pixel.js" defer></script>
+<script src="js/main.js" defer></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo" aria-label="Advlity home"><img src="Advlity.png" alt="Advlity" width="150" height="69" /></a>
+    <nav class="page-switcher" aria-label="Page navigation">
+      <a href="index.html" class="active" aria-current="page">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+    </nav>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Let's Talk</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="container">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow rise-in">Digital Marketing Agency</p>
+    <h1 class="rise-in">We Turn Attention Into <em>Growth.</em></h1>
+    <p class="rise-in">We help ambitious brands grow through digital marketing and performance-driven campaigns — creative that earns attention, media that converts it into revenue.</p>
+    <div class="hero-actions rise-in">
+      <a href="portfolio.html" class="btn btn-primary">View Our Work →</a>
+      <a href="#contact" class="btn btn-outline">Let's Work Together</a>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section" id="services">
+  <div class="container">
+    <p class="eyebrow">Services</p>
+    <h2 class="section-title">Everything you need to grow, under one roof.</h2>
+    <div class="grid grid-3" id="servicesGrid"></div>
+  </div>
+</section>
+
+<!-- Portfolio -->
+<section class="section section-dark" id="portfolio">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Clients we worked with</p>
+        <h2 class="section-title">Brands we’ve helped grow.</h2>
+      </div>
+    </div>
+
+    <div class="client-showcase-grid" id="workGrid"></div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="eyebrow">ABOUT ADVLITY</p>
+        <h2 class="section-title">A Marketing Agency Built to Grow Brands.</h2>
+        <p class="lead" style="margin-top:24px">At Advlity, we are a marketing agency helping businesses build stronger brands and achieve measurable growth. We bring strategy, creative content, design, and performance marketing together under one roof.</p>
+      </div>
+      <div class="reveal">
+        <div class="about-item">
+          <h3>Who We Are</h3>
+          <p>A marketing agency combining strategy, creativity, and performance to help businesses stand out, connect with their audience, and grow.</p>
+        </div>
+        <div class="about-item">
+          <h3>What We Do</h3>
+          <p>From marketing strategy and content creation to graphic design, reel production, and performance marketing, we provide everything businesses need to build and grow their digital presence.</p>
+        </div>
+        <div class="about-item">
+          <h3>Our Approach</h3>
+          <p>We understand the business, develop the right strategy, create with purpose, execute effectively, and continuously optimize to drive better results.</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-4" id="stepsGrid" style="margin-top:80px"></div>
+  </div>
+</section>
+
+<!-- Case Study Modal -->
+<div id="caseStudyModal" class="modal" aria-hidden="true" role="dialog">
+  <div class="modal-overlay"></div>
+  <div class="modal-container">
+    <div id="modalBody" class="modal-inner">
+      <!-- Case study content rendered by JavaScript -->
+    </div>
+  </div>
+</div>
+
+<!-- Image Lightbox -->
+<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+  <div class="lightbox-overlay"></div>
+  <div class="lightbox-container">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <div class="lightbox-content">
+      <img id="lightboxImg" src="" alt="Lightbox image" />
+    </div>
+    <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <button class="lightbox-nav next" id="lightboxNext" aria-label="Next image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- Contact -->
+<section class="section section-dark" id="contact" style="padding-top:0">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 class="section-title">Let's work together.</h2>
+        <p class="lead" style="margin-top:24px">Tell us where you want to grow. We'll come back within one business day with a short, honest plan.</p>
+        <p style="margin-top:32px;font-size:14px;color:var(--ink-muted)">advlity.ads@gmail.com</p>
+      </div>
+
+      <form class="form" id="contactForm" novalidate action="https://formspree.io/f/xwlknkjb" method="POST">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" />
+          <span class="error" data-error-for="name"></span>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" />
+          <span class="error" data-error-for="email"></span>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" placeholder="+20 100 000 0000" />
+          <span class="error" data-error-for="phone"></span>
+        </div>
+        
+        <div class="field full">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell us about your brand and goals"></textarea>
+          <span class="error" data-error-for="message"></span>
+        </div>
+        <div class="full">
+          <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo" aria-label="Advlity home"><img src="Advlity.png" alt="Advlity" width="150" height="69" /></a>
+        <p>A performance-driven digital marketing agency turning attention into measurable growth.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="portfolio.html">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Advlity. All rights reserved.</div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/201026556175" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+    <path d="M20.52 3.48A11.77 11.77 0 0 0 12.08 0C5.48 0 .18 5.3.18 11.9c0 2.1.55 4.13 1.58 5.93L0 24l6.34-1.64A11.9 11.9 0 0 0 12.08 24c6.6 0 11.9-5.3 11.9-11.9 0-3.18-1.25-6.17-3.46-8.62ZM12.08 21.8c-1.92 0-3.8-.52-5.44-1.5l-.39-.23-3.76.97 1-3.66-.26-.38A9.9 9.9 0 0 1 2.18 11.9c0-5.46 4.45-9.9 9.9-9.9 2.64 0 5.13 1.03 6.99 2.9a9.8 9.8 0 0 1 2.9 6.99c0 5.46-4.44 9.9-9.9 9.9Zm5.43-7.41c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.08-.3-.15-1.28-.47-2.44-1.5-.9-.8-1.5-1.79-1.68-2.09-.18-.3-.02-.47.13-.62.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.64-.93-2.24-.24-.58-.5-.5-.68-.5h-.58c-.2 0-.52.07-.8.38-.27.3-1.03 1-1.03 2.43s1.05 2.8 1.2 3c.15.2 2.06 3.14 5 4.39.7.3 1.24.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.13-.28-.2-.58-.35Z"/>
+  </svg>
+</a>
+
+</body>
+</html>
