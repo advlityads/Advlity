@@ -177,7 +177,8 @@ const esc = (s) => String(s).replace(/[&<>\"]/g, (c) => ({ "&": "&amp;", "<": "&
 const assetUrl = (path) => {
   if (!String(path).startsWith("images/")) return path;
   const nestedPage = /\/(?:home|portfolio)\//.test(window.location.pathname);
-  return nestedPage ? `../${path}` : path;
+  const base = nestedPage ? `../${path}` : path;
+  return encodeURI(base);
 };
 
 const getCardBrief = (brief) => {
