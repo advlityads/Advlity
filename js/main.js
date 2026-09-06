@@ -548,13 +548,21 @@ function initNav() {
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
-  toggle.addEventListener("click", () => {
-    const open = menu.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-  });
+   toggle.addEventListener("click", () => {
+     const open = menu.classList.toggle("open");
+     toggle.setAttribute("aria-expanded", String(open));
+     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+   });
 
-  menu.querySelectorAll("a").forEach((a) =>
+   const closeBtn = document.getElementById("mobileMenuClose");
+   if (closeBtn) {
+     closeBtn.addEventListener("click", () => {
+       menu.classList.remove("open");
+       toggle.setAttribute("aria-expanded", "false");
+     });
+   }
+
+   menu.querySelectorAll("a").forEach((a) =>
     a.addEventListener("click", () => {
       menu.classList.remove("open");
       toggle.setAttribute("aria-expanded", "false");
@@ -590,7 +598,7 @@ function validate(v) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.email.trim())) errors.email = "Please enter a valid email address.";
   if (!/^[+0-9\s()-]{7,20}$/.test(v.phone.trim())) errors.phone = "Please enter a valid phone number.";
   const selectedServices = Array.isArray(v.service) ? v.service : [v.service].filter(Boolean);
-  if (!selectedServices.length) errors.service = "Please select at least one service.";
+  if (v.serviceRequired && !selectedServices.length) errors.service = "Please select at least one service.";
   if (v.message.trim().length < 10) errors.message = "Tell us a little more (min. 10 characters).";
   return errors;
 }
@@ -608,6 +616,7 @@ function initForm() {
       email: form.email.value,
       phone: form.phone.value,
       service: selectedServices,
+      serviceRequired: Boolean(form.querySelector("[data-service-picker]")),
       message: form.message.value,
     };
 
@@ -620,13 +629,26 @@ function initForm() {
     btn.disabled = true;
     btn.textContent = "Sending…";
 
-    // Connect a real endpoint here later, e.g. fetch("/api/contact", {...}).
-    setTimeout(() => {
+    const submission = new FormData(form);
+    submission.delete("service");
+    selectedServices.forEach((service) => submission.append("service", service));
+
+    fetch(form.action, {
+      method: "POST",
+      body: submission,
+      headers: { Accept: "application/json" },
+    }).then((response) => {
+      if (!response.ok) throw new Error("Form submission failed");
       sessionStorage.setItem("contact_submitted", "1");
       window.location.href = window.location.pathname.includes("/home/") || window.location.pathname.includes("/portfolio/")
         ? "../thank-you/thank-you.html"
         : "thank-you/thank-you.html";
-    }, 500);
+    }).catch(() => {
+      btn.disabled = false;
+      btn.textContent = "Send Message";
+      const formError = document.querySelector('[data-error-for="form"]');
+      if (formError) formError.textContent = "We could not send your message. Please try again.";
+    });
   });
 }
 

@@ -39,6 +39,9 @@
     </button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
     <div class="container">
       <a href="#services">Services</a>
       <a href="#portfolio">Work</a>
@@ -48,6 +51,7 @@
   </div>
 </header>
 
+<main>
 <!-- Hero -->
 <section class="hero">
   <div class="container">
@@ -70,13 +74,26 @@
   </div>
 </section>
 
+<!-- CTA Strip -->
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-strip-inner">
+      <div>
+        <p class="eyebrow">Ready to grow?</p>
+        <h3 class="cta-strip-title">See how we've helped brands like yours succeed.</h3>
+      </div>
+      <a href="portfolio/portfolio.html" class="btn btn-primary">View Our Work →</a>
+    </div>
+  </div>
+</section>
+
 <!-- Portfolio -->
 <section class="section section-dark" id="portfolio">
   <div class="container">
     <div class="section-head">
       <div>
         <p class="eyebrow">Clients we worked with</p>
-        <h2 class="section-title">Brands we’ve helped grow.</h2>
+        <h2 class="section-title">Brands we've helped grow.</h2>
       </div>
     </div>
 
@@ -108,7 +125,7 @@
         </div>
       </div>
     </div>
-    <div class="grid grid-4" id="stepsGrid" style="margin-top:80px"></div>
+    <div class="grid grid-4" id="stepsGrid"></div>
   </div>
 </section>
 
@@ -148,14 +165,14 @@
 </div>
 
 <!-- Contact -->
-<section class="section section-dark" id="contact" style="padding-top:0">
+<section class="section section-dark" id="contact" style="padding-top:80px">
   <div class="container">
     <div class="contact-grid">
       <div>
         <p class="eyebrow">Contact</p>
         <h2 class="section-title">Let's work together.</h2>
         <p class="lead" style="margin-top:24px">Tell us where you want to grow. We'll come back within one business day with a short, honest plan.</p>
-        <p style="margin-top:32px;font-size:14px;color:var(--ink-muted)">advlity.ads@gmail.com</p>
+        <p style="margin-top:32px;font-size:14px;color:var(--ink-muted)"><a href="mailto:advlity.ads@gmail.com" style="color:var(--ink-muted)">advlity.ads@gmail.com</a></p>
       </div>
 
       <form class="form" id="contactForm" novalidate action="https://formspree.io/f/xwlknkjb" method="POST">
@@ -213,5 +230,6 @@
   </svg>
 </a>
 
+</main>
 </body>
 </html>
