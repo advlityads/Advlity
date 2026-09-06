@@ -178,11 +178,8 @@ const assetUrl = (path) => {
   if (!String(path).startsWith("images/")) return path;
   const nestedPage = /\/(?:home|portfolio)\//.test(window.location.pathname);
   const base = nestedPage ? `../${path}` : path;
-  // Build absolute URL for GitHub Pages subdirectory compatibility
-  const origin = window.location.origin || "";
-  const pathname = window.location.pathname || "";
-  const repoRoot = pathname.split("/").slice(0, 2).join("/") || "";
-  return encodeURI(origin + repoRoot + "/" + base.replace(/^(\.\.\/)?/, ""));
+  // Native URL resolution handles root and subdirectory deployments 100%
+  return new URL(base, document.baseURI).href;
 };
 
 const getCardBrief = (brief) => {
